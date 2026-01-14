@@ -10,6 +10,8 @@ services:
       RUSTFS_CONSOLE_ENABLE: "true"
       # RUSTFS_SERVER_DOMAINS: s3-ui.chiqors.my.id
     command: /data
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:9000/health"]
     ports:
       - "9000:9000"
       - "9001:9001"
@@ -23,6 +25,8 @@ services:
     container_name: rustfs-cli
     depends_on:
       - rustfs
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://rustfs:9000/health"]
     environment:
       RUSTFS_CLI_BINARY: rc
       RUSTFS_ENDPOINT: http://rustfs:9000
