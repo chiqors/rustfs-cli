@@ -20,7 +20,7 @@ ALIAS_NAME="${RUSTFS_ALIAS_NAME:-local}"
 ENDPOINT="${RUSTFS_ENDPOINT:-http://rustfs:9000}"
 ACCESS="${RUSTFS_ACCESS_KEY:-rustfsadmin}"
 SECRET="${RUSTFS_SECRET_KEY:-rustfsadmin}"
-WAIT="${RUSTFS_WAIT_SECONDS:-60}"
+WAIT="${RUSTFS_WAIT_SECONDS:-5}"
 T=0
 until curl -sI --connect-timeout 2 "$ENDPOINT" >/dev/null 2>&1; do
   T=$((T+1))
