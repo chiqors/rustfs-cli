@@ -72,6 +72,23 @@ Ports and data:
 - RustFS server ports: `9000` (API) and `9001` (console)
 - Data volume: `./rustfs-data:/data` (persisted locally)
 
+## Upstream CLI
+The CLI used here is maintained at:
+- https://github.com/rustfs/cli
+
+Highlights:
+- S3-compatible client supporting RustFS, MinIO, AWS S3, and others
+- Human-readable and JSON outputs, secure credential handling, cross-platform
+
+Standalone installation options:
+```bash
+# Homebrew (macOS/Linux)
+brew install rustfs/tap/rc
+
+# Cargo
+cargo install rustfs-cli
+```
+
 ## Batch Bucket Creation via Entrypoint
 The entrypoint supports a convenient batch mode:
 - If the first argument is `mb` and more names follow, it will create each bucket under the configured alias.
