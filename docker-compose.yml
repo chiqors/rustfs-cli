@@ -1,0 +1,44 @@
+services:
+  rustfs:
+    image: rustfs/rustfs:latest
+    container_name: rustfs
+    restart: unless-stopped
+    environment:
+      RUSTFS_ADDRESS: ":9000"
+      RUSTFS_ACCESS_KEY: rustfsadmin
+      RUSTFS_SECRET_KEY: rustfsadmin
+      RUSTFS_CONSOLE_ENABLE: "true"
+      # RUSTFS_SERVER_DOMAINS: s3-ui.chiqors.my.id
+    command: /data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ./rustfs-data:/data
+
+  rustfs-cli:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rustfs-cli
+    depends_on:
+      - rustfs
+    environment:
+      RUSTFS_CLI_BINARY: rc
+      RUSTFS_ENDPOINT: http://rustfs:9000
+      RUSTFS_ACCESS_KEY: rustfsadmin
+      RUSTFS_SECRET_KEY: rustfsadmin
+      RUSTFS_ALIAS_NAME: local
+    command:
+      - mb
+      - gitlab-artifacts
+      - gitlab-uploads
+      - gitlab-packages
+      - gitlab-lfs
+      - gitlab-backups
+      - gitlab-terraform
+      - gitlab-dependency-proxy
+      - gitlab-secure-files
+      - gitlab-pages
+      - gitlab-external-diffs
+      - gitlab-registry
