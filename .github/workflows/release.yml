@@ -4,6 +4,8 @@ on:
   # Only trigger on version tags (semantic versioning)
   push:
     tags: [ 'v*.*.*' ]
+  # Allow manual runs from the GitHub UI
+  workflow_dispatch:
 
 # This job builds and pushes the Docker image to GHCR
 jobs:
