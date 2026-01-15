@@ -32,7 +32,6 @@ services:
       RUSTFS_ACCESS_KEY: rustfsadmin
       RUSTFS_SECRET_KEY: rustfsadmin
       RUSTFS_ALIAS_NAME: local
-      RUSTFS_WAIT_SECONDS: 5
     command:
       - mb
       - gitlab-artifacts
