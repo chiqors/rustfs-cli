@@ -8,7 +8,6 @@ services:
       RUSTFS_ACCESS_KEY: rustfsadmin
       RUSTFS_SECRET_KEY: rustfsadmin
       RUSTFS_CONSOLE_ENABLE: "true"
-      # RUSTFS_SERVER_DOMAINS: s3-ui.chiqors.my.id
     command: /data
     healthcheck:
       test: ["CMD", "curl", "-sf", "http://localhost:9000/health"]
